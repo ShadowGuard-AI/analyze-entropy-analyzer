@@ -1,3 +1,5 @@
+![Banner](banner.png)
+
 # analyze-entropy-analyzer
 Calculate and visualize the Shannon entropy of files to identify potential obfuscation or encryption. - Focused on Data analysis and reporting
 
