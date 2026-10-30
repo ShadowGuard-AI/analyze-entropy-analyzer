@@ -2,7 +2,8 @@ import argparse
 import logging
 import math
 import os
-import pandas as pd
+import sys
+from collections import Counter
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -20,22 +21,17 @@ def calculate_entropy(data):
     if not data:
         return 0  # Empty data has zero entropy
 
+    return _entropy_from_counts(Counter(data), len(data))
+
+
+def _entropy_from_counts(counts, total):
+    # The formula only ever needs the tally, not the data itself. Keeping it
+    # separate lets analyze_file feed it counts built chunk by chunk, so a
+    # large file is never held in memory just to count its bytes.
     entropy = 0
-    data_length = len(data)
-    frequency_map = {}
-
-    # Calculate frequency of each byte
-    for byte in data:
-        if byte in frequency_map:
-            frequency_map[byte] += 1
-        else:
-            frequency_map[byte] = 1
-
-    # Calculate entropy based on byte frequencies
-    for byte in frequency_map:
-        probability = frequency_map[byte] / data_length
+    for count in counts.values():
+        probability = count / total
         entropy -= probability * math.log2(probability)
-
     return entropy
 
 
@@ -50,9 +46,15 @@ def analyze_file(filepath):
         float: The Shannon entropy of the file's contents, or None if an error occurs.
     """
     try:
+        counts = Counter()
+        total = 0
         with open(filepath, 'rb') as f:
-            file_data = f.read()  # Read the entire file as bytes
-        return calculate_entropy(file_data)
+            while chunk := f.read(65536):
+                counts.update(chunk)
+                total += len(chunk)
+        if total == 0:
+            return 0
+        return _entropy_from_counts(counts, total)
     except FileNotFoundError:
         logging.error(f"File not found: {filepath}")
         return None
@@ -100,10 +102,12 @@ def main():
     # Input validation: Check if the file exists
     if not os.path.isfile(filepath):
         logging.error(f"Error: File '{filepath}' does not exist.")
-        return
+        sys.exit(1)
 
     entropy_value = analyze_file(filepath)
 
+    if entropy_value is None:
+        sys.exit(1)
     if entropy_value is not None:
         print(f"Shannon entropy of {filepath}: {entropy_value:.4f} bits per byte")
 
@@ -114,11 +118,7 @@ def main():
                 logging.info(f"Entropy value written to {args.output}")
             except IOError as e:
                 logging.error(f"Error writing to output file {args.output}: {e}")
-
+                sys.exit(1)
 
 if __name__ == "__main__":
-    # Example usage:
-    # python main.py test.txt
-    # python main.py encrypted.dat -o entropy_output.txt
-    # python main.py suspicious_file.bin -v
     main()
