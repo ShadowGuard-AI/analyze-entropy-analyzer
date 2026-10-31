@@ -74,7 +74,7 @@ def setup_argparse():
         argparse.ArgumentParser: The configured argument parser.
     """
     parser = argparse.ArgumentParser(
-        description="Calculate and visualize the Shannon entropy of files to identify potential obfuscation or encryption."
+        description="Calculate the Shannon entropy of files to identify potential obfuscation or encryption."
     )
     parser.add_argument("filepath", help="The path to the file to analyze.")
     parser.add_argument(
