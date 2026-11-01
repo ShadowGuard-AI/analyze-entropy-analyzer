@@ -35,6 +35,11 @@ def _entropy_from_counts(counts, total):
     return entropy
 
 
+# One number for the whole file is the design and also the limit: a
+# small packed or encrypted region inside a large plain file is diluted
+# by everything around it and the average can look unremarkable. A
+# per block breakdown would catch that shape; this tool does not try,
+# and its number should not be read as proof a file has no such region.
 def analyze_file(filepath):
     """
     Analyzes the entropy of a file.
@@ -114,6 +119,11 @@ def main():
         if args.output:
             try:
                 with open(args.output, "w") as outfile:
+                    # The file gets full float precision and no trailing
+                    # newline, while the console above prints four
+                    # decimals. A script reading the file and a person
+                    # reading the terminal are looking at the same value
+                    # written two ways, and only the file form is exact.
                     outfile.write(str(entropy_value))  # Store entropy as string
                 logging.info(f"Entropy value written to {args.output}")
             except IOError as e:
