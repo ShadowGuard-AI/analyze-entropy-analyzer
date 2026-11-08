@@ -3,69 +3,69 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>analyze-entropy-analyzer: Sequoia Fire Scar Archive</title>
-<meta name="description" content="analyze-entropy-analyzer calculates the Shannon entropy of files to identify potential obfuscation or encryption. Focused on data analysis and reporting.">
+<title>analyze-entropy-analyzer: The Shuffle</title>
 <style>
-@font-face{font-family:'Autour One';src:url('fonts/AutourOne.ttf') format('truetype');}
-@font-face{font-family:'Alegreya Sans';src:url('fonts/AlegreyaSans.ttf') format('truetype');}
-:root{--rain:#14231a;--green:#2c5c34;--lime:#96d25a;--wood:#e8d9b4;--magenta:#ce3e96}
-*{box-sizing:border-box}body{margin:0;background:var(--rain);color:#eef0e2;font-family:'Alegreya Sans',sans-serif;line-height:1.65}
-h1,h2{font-family:'Autour One',sans-serif}
-.hero{padding:2rem 6vw 0;max-width:1080px;margin:0 auto}.hero img.banner{width:100%}.logo{width:150px}
-main{padding:0 6vw 3rem;max-width:1080px;margin:0 auto}
-nav{display:flex;gap:.7rem;flex-wrap:wrap;margin:1rem 0}
-.ringbtn{display:inline-block;background:var(--wood);color:var(--rain);font-family:'Autour One',sans-serif;text-decoration:none;padding:.75rem 1.4rem;border:4px solid var(--green);border-radius:48% 52% 50% 50%/70% 74% 30% 30%;transition:background .15s}
-.ringbtn:hover{background:#d9c48e;box-shadow:inset -14px 0 0 rgba(20,16,12,.45)}
-.ringbtn:active{background:#cbb37e}
-.ringbtn:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
-.logend{background:var(--wood);color:var(--rain);border:6px solid #5c3e26;border-radius:18px;padding:0 1.4rem 1.2rem;margin:1.6rem 0;background-image:repeating-radial-gradient(circle at 18% 0%,transparent 0 26px,rgba(120,88,48,.16) 26px 28px)}
-.logend h2{border-bottom:2px solid #6e502e;padding-bottom:.4rem}
-pre{background:var(--rain);color:#eef0e2;padding:1rem;overflow-x:auto}
-a{color:var(--lime)}a:before{content:'';display:inline-block;width:8px;height:16px;border-radius:50%;background:var(--lime);margin-right:.45em;vertical-align:-2px}
-a:hover:before{background:var(--magenta)}
-.ringbtn:before,nav a:before{content:none}
-.litter{height:18px;margin:2rem 0;background:repeating-linear-gradient(115deg,var(--green) 0 16px,transparent 16px 26px,var(--rain) 26px 40px,transparent 40px 50px);position:relative}
-.litter:after{content:'';position:absolute;right:9%;top:4px;width:11px;height:11px;border-radius:50%;background:var(--magenta)}
-footer{padding:1rem 6vw 2.4rem;max-width:1080px;margin:0 auto}
+@font-face { font-family: 'Carter One'; src: url('fonts/CarterOne-400.woff2') format('woff2'); font-weight: 400; }
+@font-face { font-family: 'Work Sans'; src: url('fonts/WorkSans-400.woff2') format('woff2'); font-weight: 400; }
+@font-face { font-family: 'Work Sans'; src: url('fonts/WorkSans-700.woff2') format('woff2'); font-weight: 700; }
+:root { --ivory: #f2ead8; --walnut: #5d4030; --ink: #1d1712; --red: #b3392c; --felt: #2c2019; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Work Sans', sans-serif; background: var(--felt); color: var(--ivory); line-height: 1.6; }
+header.top { display: flex; justify-content: space-between; align-items: center; padding: 16px 28px; background: var(--walnut); border-bottom: 4px solid var(--red); }
+.wordmark { font-weight: 700; letter-spacing: .05em; }
+.suit { color: #f0a49c; font-size: .85rem; letter-spacing: .12em; text-transform: uppercase; }
+.hero { text-align: center; padding: 50px 22px 8px; }
+.hero img.logo { width: 170px; height: auto; border: 4px solid var(--ivory); border-radius: 8px; }
+h1 { font-family: 'Carter One', sans-serif; font-weight: 400; font-size: 2.6rem; margin: 18px 0 6px; }
+h2 { font-family: 'Carter One', sans-serif; font-weight: 400; color: #e8c9a0; border-bottom: 2px solid var(--walnut); padding-bottom: 5px; margin-top: 38px; }
+.tag { max-width: 43rem; margin: 0 auto; }
+.buttons { margin: 22px 0 6px; }
+.buttons a { display: inline-block; margin: 4px; padding: 11px 22px; background: var(--red); color: #fff; font-weight: 700; text-decoration: none; border-radius: 4px; }
+.buttons a.alt { background: transparent; color: var(--ivory); border: 2px solid var(--ivory); }
+figure.wide { max-width: 1020px; margin: 24px auto; padding: 0 18px; }
+figure.wide img { width: 100%; height: auto; display: block; border: 1px solid var(--walnut); }
+figcaption { color: #c4b299; font-size: .9rem; padding-top: 8px; text-align: center; }
+.strip { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; padding: 20px 18px; }
+.strip div { background: var(--walnut); border-top: 3px solid var(--red); padding: 13px 18px; min-width: 180px; text-align: center; }
+.strip b { display: block; font-family: 'Carter One', sans-serif; font-weight: 400; color: #e8c9a0; font-size: 1.1rem; }
+main { max-width: 880px; margin: 0 auto; padding: 8px 22px 30px; }
+table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid var(--walnut); padding: 8px 12px; text-align: left; vertical-align: top; }
+th { background: var(--walnut); color: #e8c9a0; }
+code { background: #171008; padding: 1px 6px; border-radius: 3px; color: #e8c9a0; }
+.hold { border-left: 5px solid var(--red); background: #241a13; padding: 13px 18px; }
+footer { text-align: center; padding: 24px 18px 32px; color: #a68f76; font-size: .9rem; border-top: 4px solid var(--red); margin-top: 28px; }
 </style>
 </head>
 <body>
-<header class="hero">
-<img class="logo" src="assets/logo.png" alt="Cross section disc of growth rings with one dark fire scar wedge and a lime line of new growth">
-<img class="banner" src="assets/banner.png" alt="Sequoia grove with a cut fallen giant, the project title branded in an arc along its bark edge">
-<h1>analyze-entropy-analyzer</h1>
-<p>A walk around the clearing. Each topic sits at a station on a rough circular path.</p>
-<nav>
-<a class="ringbtn" href="#measure">The measure</a>
-<a class="ringbtn" href="#starting">Starting it</a>
-<a class="ringbtn" href="#controls">Controls</a>
-<a class="ringbtn" href="#outcomes">Outcomes</a>
-</nav>
-</header>
+<header class="top"><span class="wordmark">analyze-entropy-analyzer</span><span class="suit">One red card</span></header>
+<section class="hero">
+<img class="logo" src="assets/logo.png" alt="Two halves of an ivory deck seen from above swirling into each other mid riffle shuffle on a walnut table, black club and spade suit marks blurring past, one red King of hearts card standing out face up at the centre">
+<h1>The Shuffle</h1>
+<p class="tag">Calculate the Shannon entropy of files to identify potential obfuscation or encryption. A shuffled deck holds no readable order; an obfuscated or encrypted file reads the same way, and its entropy is the measure of that disorder.</p>
+<p class="buttons"><a href="https://github.com/ShadowGuard-AI/analyze-entropy-analyzer">View on GitHub</a> <a class="alt" href="https://github.com/ShadowGuard-AI/analyze-entropy-analyzer#readme">Read the README</a></p>
+</section>
+<figure class="wide"><img src="assets/intro-banner.png" alt="Arched bridge of ivory cards close up collapsing into a single disordered stack on a walnut table, every edge misaligned and no run of cards in sequence, one red Ace of hearts lying among the scattered face down cards"><figcaption>The bridge collapsing into a single disordered stack, no run of cards in sequence.</figcaption></figure>
+<div class="strip">
+<div><b>Shannon</b>entropy of files</div>
+<div><b>Obfuscation</b>or encryption, spotted</div>
+<div><b>0 bytes</b>requirements.txt is empty</div>
+<div><b>3</b>documented parameters</div>
+</div>
 <main>
-<section class="logend" id="measure"><h2>Station one: what the measure is</h2>
-<p>analyze-entropy-analyzer calculates the Shannon entropy of files to identify potential obfuscation or encryption, and the README groups its focus under data analysis and reporting.</p>
-<p>This station prints no entropy scale, no threshold figure, and no verdict words such as safe or packed, because the source supplies none. That absence is noted here in plain type.</p>
-</section>
-<div class="litter"></div>
-<section class="logend" id="starting"><h2>Station two: getting hold of it and starting it</h2>
-<pre>git clone https://github.com/ShadowStrikeHQ/analyze-entropy-analyzer
-./analyze-entropy-analyzer [params]</pre>
-<p>The documented usage names no input file argument even though the tool is described as working on files. How a file is handed to the program is not spelled out in the README, and this station says so in its own panel rather than in a footnote.</p>
-</section>
-<div class="litter"></div>
-<section class="logend" id="controls"><h2>Station three: the three controls</h2>
-<p><code>-h</code> shows a help message and exits.</p>
-<p><code>-o</code> optionally specifies an output file to store the entropy value.</p>
-<p><code>-v</code>: no description in the source. Its ring segment is left bare apart from that label, because inventing a claim for it would go beyond what the document supports.</p>
-</section>
-<div class="litter"></div>
-<section class="logend" id="outcomes"><h2>Station four: outcomes, stated honestly</h2>
-<p>The README gives the entropy value itself as the result, and allows that value to be stored in a file through <code>-o</code>. It goes no further: no sample file, no example score, no comparison between a text file and an encrypted one, and no test results appear in the source.</p>
-<p>License: Copyright (c) ShadowStrikeHQ, with no licence named, reproduced as written.</p>
-<p><a href="https://github.com/ShadowGuard-AI/analyze-entropy-analyzer">The repository on GitHub</a></p>
-</section>
+<h2>What it does</h2>
+<p>The tool calculates the Shannon entropy of files to identify potential obfuscation or encryption. Usage, as the README gives it: <code>./analyze-entropy-analyzer [params]</code>. Its requirements file is present and empty at 0 bytes: the tool declares no dependencies there.</p>
+<figure class="wide" style="padding:0;margin:18px 0;"><img src="assets/banner.png" alt="Full deck at every stage of one shuffle across a walnut table, cards arched in a bridge at the centre, fanned in a loose arc to one side and scattered face down to the other, one red Ace of hearts bright among the ivory"></figure>
+<h2>Parameters</h2>
+<table>
+<tr><th>Parameter</th><th>What the README says</th></tr>
+<tr><td><code>-h</code></td><td>Show help message and exit</td></tr>
+<tr><td><code>-o</code></td><td>Optional: Specify an output file to store the entropy value.</td></tr>
+<tr><td><code>-v</code></td><td>No description provided</td></tr>
+</table>
+<h2>Stated limits</h2>
+<div class="hold"><p><code>-v</code> arrives with no description in the source, and the usage line names no input file argument even though the tool is described as calculating the entropy of files. Both gaps are left as gaps on this page, with nothing invented to fill them. The licence line at the close of the README is a copyright line only, with no licence named.</p></div>
 </main>
-<footer><p>Theme: a sequoia fire scar archive. Type: Autour One for headings, Alegreya Sans for reading, both SIL Open Font License 1.1. Lettering reference Super Stamped was reference only and is not embedded.</p></footer>
+<footer>analyze-entropy-analyzer, every edge misaligned. Fonts: Carter One and Work Sans, self-hosted under the SIL Open Font License.</footer>
 </body>
 </html>

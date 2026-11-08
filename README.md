@@ -1,8 +1,10 @@
-![Sequoia clearing with the cut face of a fallen giant, rings and dark fire scar notches, fern fronds and seed pods in the foreground, no text](intro-banner.png)
+![Arched bridge of ivory cards close up collapsing into a single disordered stack on a walnut table, every edge misaligned and no run of cards in sequence, one red Ace of hearts lying among the scattered face down cards](intro-banner.png)
 
 # analyze-entropy-analyzer
 
-![Sequoia grove with a cut fallen giant, the project title branded in an arc along the outer bark edge of its cut face](banner.png)
+![Full deck at every stage of one shuffle across a walnut table, cards arched in a bridge at the centre, fanned in a loose arc to one side and scattered face down to the other, one red Ace of hearts bright among the ivory](banner.png)
+
+<p align="center"><img src="logo.png" alt="Two halves of an ivory deck seen from above swirling into each other mid riffle shuffle on a walnut table, black club and spade suit marks blurring past, one red King of hearts card standing out face up at the centre" width="180"></p>
 
 ![Cut sequoia face scene: a highlight travels outward from the heart ring and pauses at each fire scar while seed pods drift down](scene.svg)
 
