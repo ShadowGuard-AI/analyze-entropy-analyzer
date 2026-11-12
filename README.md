@@ -7,9 +7,7 @@
 <p align="center"><img src="logo.png" alt="Two halves of an ivory deck seen from above swirling into each other mid riffle shuffle on a walnut table, black club and spade suit marks blurring past, one red King of hearts card standing out face up at the centre" width="180"></p>
 
 ![Cut sequoia face scene: a highlight travels outward from the heart ring and pauses at each fire scar while seed pods drift down](scene.svg)
-
-# analyze-entropy-analyzer
-Calculate the Shannon entropy of files to identify potential obfuscation or encryption. - Focused on Data analysis and reporting
+Calculate the Shannon entropy of files to identify potential obfuscation or encryption, focusing on automated data analysis and reporting
 
 ## Install
 `git clone https://github.com/ShadowStrikeHQ/analyze-entropy-analyzer`
